@@ -9,6 +9,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style type="text/css" media="all">
+    [data-theme="dark"] {
+      background-color: #111 !important;
+      color: #eee;
+    }
+
+    [data-theme="dark"] .bg-light {
+      background-color: #333 !important;
+    }
+
+    [data-theme="dark"] .bg-white {
+      background-color: #000 !important;
+    }
+
+    [data-theme="dark"] .bg-black {
+      background-color: #eee !important;
+    }
+    </style>
 
     <title>COLLAB</title>
   </head>
@@ -16,7 +35,7 @@
     <!-- HEADER WEB -->
 
     <!-- NAVBAR -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-white bg-white">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"><b>COLLAB</b></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,14 +54,15 @@
                 <a class="nav-link" href="#">EXPERIENCE</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">SERVICES</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#">PROJECT</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">REVIEW</a>
-              </li>
+              <div class="custom-control custom-switch text-primary">
+                <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+              </div>
+              <script type="text/javascript" charset="utf-8">
+                function initTheme(){var e=null!==localStorage.getItem("darkSwitch")&&"dark"===localStorage.getItem("darkSwitch");darkSwitch.checked=e,e?document.body.setAttribute("data-theme","dark"):document.body.removeAttribute("data-theme")}function resetTheme(){darkSwitch.checked?(document.body.setAttribute("data-theme","dark"),localStorage.setItem("darkSwitch","dark")):(document.body.removeAttribute("data-theme"),localStorage.removeItem("darkSwitch"))}var darkSwitch=document.getElementById("darkSwitch");window.addEventListener("load",function(){darkSwitch&&(initTheme(),darkSwitch.addEventListener("change",function(){resetTheme()}))});
+              </script>
             </ul>
           </div>
         </div>
@@ -163,6 +183,57 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     -->
+    <script type="text/javascript" charset="utf-8">
+      var darkSwitch = document.getElementById("darkSwitch");
+      window.addEventListener("load", function () {
+        if (darkSwitch) {
+          initTheme();
+          darkSwitch.addEventListener("change", function () {
+          resetTheme();
+          });
+        }
+      });
+
+      /**
+       * Summary: function that adds or removes the attribute 'data-theme' depending if
+       * the switch is 'on' or 'off'.
+       *
+       * Description: initTheme is a function that uses localStorage from JavaScript DOM,
+       * to store the value of the HTML switch. If the switch was already switched to
+       * 'on' it will set an HTML attribute to the body named: 'data-theme' to a 'dark'
+       * value. If it is the first time opening the page, or if the switch was off the
+       * 'data-theme' attribute will not be set.
+       * @return {void}
+       */
+       
+        function initTheme() {
+          var darkThemeSelected =
+            localStorage.getItem("darkSwitch") !== null &&
+            localStorage.getItem("darkSwitch") === "dark";
+            darkSwitch.checked = darkThemeSelected;
+            darkThemeSelected
+            ? document.body.setAttribute("data-theme", "dark")
+            : document.body.removeAttribute("data-theme")
+        }
+
+        /**
+         * Summary: resetTheme checks if the switch is 'on' or 'off' and if it is toggled
+         * on it will set the HTML attribute 'data-theme' to dark so the dark-theme CSS is
+         * applied.
+         * @return {void}
+         */
+         
+        function resetTheme() {
+          if (darkSwitch.checked) {
+            document.body.setAttribute("data-theme", "dark");
+            localStorage.setItem("darkSwitch", "dark");
+          } else {
+            document.body.removeAttribute("data-theme");
+            localStorage.removeItem("darkSwitch");
+          }
+        }
+
+    </script>
     
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
