@@ -56,9 +56,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">PROJECT</a>
               </li>
-              <div class="custom-control custom-switch text-primary">
-                <input type="checkbox" class="custom-control-input" id="darkSwitch">
-                <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+              <div class="form-check form-switch text-primary">
+                <input class="form-check-input" type="checkbox" id="darkSwitch">
+                <label class="form-check-label" for="darkSwitch">Dark Mode</label>
               </div>
               <script type="text/javascript" charset="utf-8">
                 function initTheme(){var e=null!==localStorage.getItem("darkSwitch")&&"dark"===localStorage.getItem("darkSwitch");darkSwitch.checked=e,e?document.body.setAttribute("data-theme","dark"):document.body.removeAttribute("data-theme")}function resetTheme(){darkSwitch.checked?(document.body.setAttribute("data-theme","dark"),localStorage.setItem("darkSwitch","dark")):(document.body.removeAttribute("data-theme"),localStorage.removeItem("darkSwitch"))}var darkSwitch=document.getElementById("darkSwitch");window.addEventListener("load",function(){darkSwitch&&(initTheme(),darkSwitch.addEventListener("change",function(){resetTheme()}))});
